@@ -49,8 +49,16 @@ const Main = () => {
                 onChange={(e) => setBusqueda(e.target.value)}
                 className="border border-gray-300 rounded-lg p-2 mb-4 w-full max-w-md"
             />
-           
-
+            <div className="flex flex-wrap justify-center gap-4 mb-4">
+                {productosFiltrados.map((producto) => (
+                    <ProductCard key={producto.id} producto={producto} />
+                ))
+                    
+                }
+            </div>
+            {productosFiltrados.length === 0 && (
+                <p className="text-white">No se encontraron productos.</p>
+            )}
     </div>
         );
     }
