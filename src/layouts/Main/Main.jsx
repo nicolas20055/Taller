@@ -21,6 +21,7 @@ export const obtenerProductos = async () => {
 
 const Main = () => {
     const [productos, setProductos] = useState([]);
+    const [busqueda, setBusqueda] = useState("");
 
 
     useEffect(() => {
@@ -30,20 +31,29 @@ const Main = () => {
         };
 
         fetchProductos();
+
     }, []);
+
+    const productosFiltrados = productos.filter((producto) =>
+        producto.title.toLowerCase().includes(busqueda.toLowerCase())
+    );
 
  
 
     return (
-        <div>
-            <h1>Lista de Productos</h1>
-            <div className={{}}>
-                {productos.map((producto) => (
-                    <ProductCard key={producto.id} producto={producto} />
-                ))}
-            </div>
-        </div>
-    );
-};
+        <div className="flex flex-col items-center justify-center mt-4">
+            <input
+                type="text"
+                placeholder="Buscar productos..."
+                value={busqueda}
+                onChange={(e) => setBusqueda(e.target.value)}
+                className="border border-gray-300 rounded-lg p-2 mb-4 w-full max-w-md"
+            />
+           
+
+    </div>
+        );
+    }
+
 
 export default Main;
