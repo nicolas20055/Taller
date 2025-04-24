@@ -23,7 +23,6 @@ const Main = () => {
     const [productos, setProductos] = useState([]);
     const [busqueda, setBusqueda] = useState("");
 
-
     useEffect(() => {
         const fetchProductos = async () => {
             const data = await obtenerProductos();
@@ -38,7 +37,6 @@ const Main = () => {
         producto.title.toLowerCase().includes(busqueda.toLowerCase())
     );
 
- 
 
     return (
         <div className="flex flex-col items-center justify-center mt-4">
